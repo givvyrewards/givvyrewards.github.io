@@ -1,0 +1,21 @@
+const params = new Proxy(new URLSearchParams(window.location.search), {
+  get: (searchParams, prop) => searchParams.get(prop),
+});
+let affiliate = params.affiliate || params.affiliate_id;
+
+var queryParams = new URLSearchParams(window.location.search);
+
+if (affiliate) {
+  queryParams.set("affiliate", affiliate);
+  queryParams.set("affiliate_id", affiliate);
+} else {
+  queryParams.delete("affiliate");
+  queryParams.delete("affiliate_id");
+}
+
+let newUrl = "";
+if (queryParams.toString().length) {
+  newUrl = "?" + queryParams.toString();
+}
+
+history.replaceState(null, null, newUrl);

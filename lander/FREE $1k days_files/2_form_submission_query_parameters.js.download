@@ -1,0 +1,12 @@
+
+	$(function (){
+		$('#cfAR').on('submit', function (ev) {
+			//ev.preventDefault();
+			if ($('input[name="email"]').val() ){
+				console.log('clicked');
+				var utms = window.location.href.split('?')[1];
+				// ADD YOUR NEXT PAGE URL BELOW
+              setTimeout(function(){window.location.replace("https://7figureacceleration.com/casestudy-3" + "?" + utms);}, 600);
+			}
+		});
+	});
